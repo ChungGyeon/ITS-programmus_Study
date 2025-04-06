@@ -1,15 +1,11 @@
-def solution(babbling):
-    babbling_dict = ["aya", "ye", "woo", "ma"]
-    answer = 0
-    for word in babbling:
-        for babble in babbling_dict:
-            if babble in word:
-                word = word.replace(babble, " ")
-        if len(word.strip()) == 0:
-            answer += 1
+def solution(common):
+    common.sort()
 
-    return answer
-
-babbling_dict = ["ayaye", "uuuma", "ye", "yemawoo", "ayaa"]
-print(solution(babbling_dict))
-
+    if common[1]-common[0] == common[2]-common[1]:
+        return common[-1]+common[1]-common[0]
+    elif common[1] /common[0] == common[2] /common[1]:
+        return common[-1]*(common[1]//common[0])
+    else:
+        return 0
+common = [10,20,30]
+print(solution(common))
