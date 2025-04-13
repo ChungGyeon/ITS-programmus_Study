@@ -1,11 +1,8 @@
-def solution(common):
-    common.sort()
+def solution(num, total):
+    start = (total // num) - (num - 1) // 2
+    answer = [start+i for i in range(num)]
+    return answer
 
-    if common[1]-common[0] == common[2]-common[1]:
-        return common[-1]+common[1]-common[0]
-    elif common[1] /common[0] == common[2] /common[1]:
-        return common[-1]*(common[1]//common[0])
-    else:
-        return 0
-common = [10,20,30]
-print(solution(common))
+print(solution(3, 12))  
+print(solution(5, 15))  
+print(solution(4, 14)) 
