@@ -41,16 +41,17 @@ def solution(food):
     
     foodlist=[]
     lfoodlist=""
-    for i in food:
-        if(i==1):
+    for i,t in enumerate(food):
+        if(i==0):
             continue
-        if(i%2!=0):
-            for j in range(0,int((i-1)/2)):
-               foodlist.append(food.index(i))
+        if(t%2!=0):
+            for j in range(0,int((t-1)/2)):
+               foodlist.append(i)
         else:
-            for j in range(0,int(i/2)):
-              foodlist.append(food.index(i))
+            for j in range(0,int(t/2)):
+              foodlist.append(i)
     foodlist.append(0)
+
     for i in range(len(foodlist)-1,-1,-1):
         if(foodlist[i]==0):
             continue
