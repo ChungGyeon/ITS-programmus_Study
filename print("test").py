@@ -1,19 +1,19 @@
 """
-어우 문제 길어
+JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 단, 첫 문자가 알파벳이 아닐 때에는 이어지는 알파벳은 소문자로 쓰면 됩니다. (첫 번째 입출력 예 참고)
+문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.
 """
 
-def solution(n):
-    answer = 0
-    while n > 0:
-        if n % 2 == 0:
-            n //= 2  # 순간이동(건전지 소모 없음)
+def solution(s):
+    words = s.split(' ')
+    result = []
+    for word in words:
+        if word:
+            result.append(word[0].upper() + word[1:].lower())
         else:
-            n -= 1   # 점프(건전지 소모 1)
-            answer += 1
-    return answer
+            result.append('')
+    return ' '.join(result)
 
-print(solution(5))
-
+print(solution("3people unFollowed me"))
 
 
 
