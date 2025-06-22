@@ -1,19 +1,26 @@
 """
-JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 단, 첫 문자가 알파벳이 아닐 때에는 이어지는 알파벳은 소문자로 쓰면 됩니다. (첫 번째 입출력 예 참고)
-문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.
+Finn은 요즘 수학공부에 빠져 있습니다. 수학 공부를 하던 Finn은 자연수 n을 연속한 자연수들로 표현 하는 방법이 여러개라는 사실을 알게 되었습니다. 예를들어 15는 다음과 같이 4가지로 표현 할 수 있습니다.
+
+1 + 2 + 3 + 4 + 5 = 15
+4 + 5 + 6 = 15
+7 + 8 = 15
+15 = 15
+자연수 n이 매개변수로 주어질 때, 연속된 자연수들로 n을 표현하는 방법의 수를 return하는 solution를 완성해주세요.
 """
 
-def solution(s):
-    words = s.split(' ')
-    result = []
-    for word in words:
-        if word:
-            result.append(word[0].upper() + word[1:].lower())
-        else:
-            result.append('')
-    return ' '.join(result)
+def solution(n):
+    answer = 0
+    for start in range(1, n + 1):
+        total = 0
+        current = start
+        while total < n:
+            total += current
+            current += 1
+        if total == n:
+            answer += 1
+    return answer
 
-print(solution("3people unFollowed me"))
+print(solution(15))
 
 
 
