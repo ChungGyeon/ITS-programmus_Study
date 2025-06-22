@@ -1,40 +1,34 @@
 """
-점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다.
- 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다.
-학생들의 번호는 체격 순으로 매겨져 있어, 
-바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다. 
-예를 들어, 4번 학생은 3번 학생이나 5번 학생에게만 체육복을 빌려줄 수 있습니다. 
-체육복이 없으면 수업을 들을 수 없기 때문에 체육복을 적절히 빌려 최대한 많은 학생이 체육수업을 들어야 합니다.
-
-전체 학생의 수 n, 체육복을 도난당한 학생들의 번호가 담긴 배열 lost, 
-여벌의 체육복을 가져온 학생들의 번호가 담긴 배열 reserve가 매개변수로 주어질 때, 
-체육수업을 들을 수 있는 학생의 최댓값을 return 하도록 solution 함수를 작성해주세요.
+두 수의 최소공배수(Least Common Multiple)란 입력된 두 수의 배수 중 공통이 되는
+ 가장 작은 숫자를 의미합니다.
+  예를 들어 2와 7의 최소공배수는 14가 됩니다. 
+  정의를 확장해서, n개의 수의 최소공배수는 n 개의 수들의 배수 중
+   공통이 되는 가장 작은 숫자가 됩니다.
+    n개의 숫자를 담은 배열 arr이 입력되었을 때 이 수들의 최소공배수를 
+    반환하는 함수,solution을 완성해 주세요.
 """
-def solution(n, lost, reserve):
-    lost_set=set(lost)
-    reserve_set=set(reserve)
-    lapover=lost_set & reserve_set
-    lost_set-=lapover
-    reserve_set-=lapover
-    reserve=list(reserve_set)
-    lost=list(lost_set)
-    for i in reserve:
-        if i-1 in lost:
-            lost.remove(i-1)
-        elif i+1 in lost:
-            lost.remove(i+1)
 
-    answer = (n-len(lost))
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def lcm(a, b):
+    return a * b // gcd(a, b)
+
+def solution(arr):
+    answer = arr[0]
+    for num in arr[1:]:
+        answer = lcm(answer, num)
     return answer
 
-lost = [3]
-reserve = [1]
-print(solution(3,lost,reserve))
-
-            
+# 예시 실행
+# print(solution([2, 7, 3]))  # 42
 
 
 
 
 
-    
+
+
+
